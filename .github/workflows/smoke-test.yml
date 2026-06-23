@@ -1,0 +1,43 @@
+name: Ubuntu smoke test
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  smoke-test:
+    strategy:
+      matrix:
+        os: [ubuntu-22.04, ubuntu-24.04]
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 20
+    steps:
+      - name: Depoyu al
+        uses: actions/checkout@v4
+
+      - name: Script izinlerini ayarla
+        run: chmod +x setup.sh scripts/*.sh
+
+      - name: Araç zincirini kur ve doğrula
+        run: ./scripts/bootstrap_ubuntu.sh
+
+      - name: Workspace şablonunu üret
+        run: ./scripts/create_cpp_workspace.sh "$RUNNER_TEMP/cpp-lab"
+
+      - name: Smoke testleri çalıştır
+        run: ./scripts/run_smoke_tests.sh
+
+      - name: Kabul örneklerini derle
+        run: |
+          g++ -std=c++17 -Wall -Wextra -Werror \
+            "$RUNNER_TEMP/cpp-lab/01-hello-world/main.cpp" \
+            -o "$RUNNER_TEMP/hello-app"
+          "$RUNNER_TEMP/hello-app"
+          g++ -std=c++17 -Wall -Wextra -Werror \
+            "$RUNNER_TEMP/cpp-lab/13-fire-alarm-simulation/main.cpp" \
+            -o "$RUNNER_TEMP/alarm-app"
+          "$RUNNER_TEMP/alarm-app"
+

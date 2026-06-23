@@ -1,0 +1,30 @@
+# C/C++ çıktıları
+app
+*.o
+*.obj
+*.out
+*.exe
+*.a
+*.so
+*.dll
+*.dylib
+
+# CMake çıktıları
+build/
+cmake-build-*/
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+compile_commands.json
+
+# Editör ve işletim sistemi geçici dosyaları
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+
+# VS Code ayarları bu repoda bilinçli olarak takip edilir.
+!.vscode/
+!.vscode/*.json
+

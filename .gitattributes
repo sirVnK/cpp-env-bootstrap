@@ -1,0 +1,13 @@
+* text=auto
+
+# WSL içinde doğrudan çalıştırılan dosyalarda CRLF kaynaklı ^M hatasını önle.
+*.sh text eol=lf
+*.cpp text eol=lf
+CMakeLists.txt text eol=lf
+*.yml text eol=lf
+*.json text eol=lf
+*.md text eol=lf
+
+# Windows PowerShell için doğal satır sonunu kullan; UTF-8 BOM dosyada korunur.
+*.ps1 text eol=crlf
+
