@@ -25,7 +25,7 @@ I built this as developer tooling for my own C++ workflow — a small automation
 ## Installation
 
 ```bash
-git clone https://github.com/Logshi/cpp-env-bootstrap.git
+git clone https://github.com/sirVnK/cpp-env-bootstrap.git
 cd cpp-env-bootstrap
 chmod +x *.sh
 ```
