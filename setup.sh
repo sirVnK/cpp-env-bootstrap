@@ -1,7 +1,8 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-readonly PROJECT_ROOT="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
+PROJECT_ROOT=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)
+readonly PROJECT_ROOT
 # shellcheck source=scripts/common.sh
 source "$PROJECT_ROOT/scripts/common.sh"
 
