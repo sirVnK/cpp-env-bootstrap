@@ -21,14 +21,11 @@ jobs:
       - name: Script izinlerini ayarla
         run: chmod +x setup.sh scripts/*.sh
 
-      - name: Araç zincirini kur ve doğrula
-        run: ./scripts/bootstrap_ubuntu.sh
+      - name: Belgelenen kurulumu geçici workspace ile çalıştır
+        run: ./setup.sh "$RUNNER_TEMP/cpp-lab"
 
-      - name: Workspace şablonunu üret
-        run: ./scripts/create_cpp_workspace.sh "$RUNNER_TEMP/cpp-lab"
-
-      - name: Smoke testleri çalıştır
-        run: ./scripts/run_smoke_tests.sh
+      - name: Kurulumun güvenle yeniden çalıştırılabildiğini doğrula
+        run: ./setup.sh "$RUNNER_TEMP/cpp-lab"
 
       - name: Kabul örneklerini derle
         run: |
